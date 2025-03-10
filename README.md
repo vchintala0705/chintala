@@ -1,1 +1,1 @@
-# chintala
+# google-stock-prediction
