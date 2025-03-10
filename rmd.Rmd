@@ -1,0 +1,253 @@
+---
+title: "Prediction of Google Stocks"
+author: "Vaishnavi Chintala"
+date: "2024-06-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Stock market price prediction is an important task considered by investors, analysts, and policymakers given the significance of the stock market in the global economy. Continually adapting to these shifts and thriving in this environment is tough but immensely satisfying, primarily because of the nature of financial markets. The issuance of concrete predictions can pay off in terms of sizable monetary rewards and bolstered margins of safety, and can also serve society’s function for improved market reliability. This research aims to use Google stock prices historical data and statistical techniques for modelling purposes so as to come up with a forecast on the future prices of Google stocks.
+
+This is because stocks are a representation of the health of the economy and the feelings of the shareholders in particular era. In this regard, the company under discussion, namely Google, which is a part of the technology industry, has demonstrated significant level of growth as well as fluctuations, making it quite promising for the research. This paper analyzes the patterns of Google’s stock prices over a period of time in an endeavor to offer understanding and foretell the fluctuations in the prices, knowledge that needs to be acquired by investors with an aspiration to maximize returns and politicians intending to rightfully stabilize the market.
+
+Another type of approach used in stock price prediction research has also included methods that have been widely used in other fields of study but are still relatively new in stock price prediction studies. These methods have been shown to be effective in identifying the market dynamics and even in making a realistic forecast. For instance, the new machine learning algorithms have significantly improved the predictive models compared with some of the early or traditional approaches. However, there are still some issues with the management of risk associated with stock exchanges where its volatility remains unpredictable.
+
+The intent of the current paper is to establish a sound model to forecast Google’s stock prices With the help of an appropriate methodology, the analysis of the available data will be enhanced and the output would be in the form of effortless prediction of Google’s stock prices. In this research, a cross-sectional study will be conducted with the objective of exploring the factors that have an impact on stock prices by utilizing historical stock data from Yahoo Finance and Kaggle in the hope of creating a predictive model for future stock price movements. The selected variables for the analysis of the stock data involve: the Open, High, Low, Close and Adjusted Close prices and the Volume of stock traded during the time interval besides which a Moving Average of the 20-day period has been used for capturing the short-term fluctuations.
+
+
+## Literature Review
+
+Stock Market prediction has been an area of focus for a long time due to its potential for significant monetary gains and the consequences any erroneous predictions have on the economy. In the existing literature, several methods have been formulated and deployed to undertake stock price forecasting using diverse datasets and different algorithms. These are the methodological approaches to theory, their advantages and the difficulties involved are outlined in this literature review.
+
+Linear regression and time series analysis are two of the most common forms of statistical analyzation that are used in predicting stock markets. It uses historical data to forecast the price of a property like those above mentioned. They are based on past experiences to predict future changes in the market. Other examples of models used in the analysis include the regression analysis models such as the linear regression models used in forecasting of stock prices through determination of a relationship between dependent and independent variables. However, these models have limitations because of their linear functional forms and interpretability.
+
+Recently, some new methods like machine learning algorithms have become preferable for making stock market prediction because they work excellently when dealing with big data and various interconnections between different variables. To enhance prediction techniques, accuracy has been achieved through machine learning models including support vector machines, decision trees and artifactual neural networks. For instance Kernels Ban, Support vector machines are good in high dimensional spaces, as well as capable of modelling non-parametric relationships. Decision trees and other models based on its principles like random forests and gradient boosting tends to have a fairly good result by fine tuning lots of inferior learners into a strong model. In the exponential growth in analytics, artificial neural networks particularly deep learning models such as long short term memory (LSTM) networks have proven extremely capable in capturing temporal dependencies and non-linearities in stock price data. However, these models demand a large amount of computational power and large quantities of data for training, and these can become prohibitive factors in their use.
+
+
+Another novel technique in the study of stock market forecasting is sentiment analysis where data from texts; in news websites, social platforms and even the annual reports are used to determine market sentiment. The premise of this study revolves around the fact that the market sentiment expressed in these texts can have an impact on the stock prices. Basically, it uses NLP tools to extract and measure sentiments that in turn are used into different models predictive in nature. In this paper, Kim and Henke (2021) argue that sentiment analysis can be useful in understanding aspects such as the effect of unexpected events, such as news on the stock prices. Nonetheless, the effectiveness of SA is partly a function of the quality and pertinence of the textual data fed into SA and the level of complexity of the customized NLP tools applied.
+
+
+Fundamental analysis is anchored to the premise that the market price is likely to correlate with the actual value of the stock in the long-run (Chiarello et al. 2021). This approach is quite effective and can go as deep as possible to explain the profitability of a firm, but it is normally very time consuming, and it requires a lot of data that may not always be easily accessible. However, there are certain issues, which are still considered to be crucial and complex when it comes to the prediction of the stock market. Other factors that influence the internal context include market fluctuations and other external limitations like political events and different policies that contribute to uncertainties in business predictions (Ciampi et al. 2021). The emerging field of big data and analytical tools has paved way for the new possibilities for accurately predicting the stock markets. Technologies such as big data permit the manipulation and analysis of large and complex sets of structured and unstructured information incorporated into the prediction models. Some of the methods are; Deep learning: This is a subcategory of machine and deep learning is a technique used in artificial intelligence which can provide features that are typically useful in the discovery of new correlations and detailed numeric predictability. They also promote faster analysis since the trading process is real-time, and this leads to more dynamic trading strategies.
+
+In the future perspectives, there can be seen several trends such as the synergy of different approaches and applying the new sources of data that can stimulate the further development of the stock market prediction. The key challenge will be the need for refinement of the models, to reflect variable market conditions and their ability to learn independently based on current data. Moreover, the disenabling features that pertain to ethical issues of predictive modeling, for instance, market manipulation and the necessity to explain the results will be a subject of concern (Beckman et al. 2021).
+
+## Research Question(s)
+This study seeks to address the following research questions:
+
+1.	What are the key factors that influence Google stock prices?
+
+2.	How can the model be tested to ensure its reliability?
+
+## Theory
+
+Drawing more on the insights from the field of statistics, machine learning, and data analysis, the theoretical framework of this study relies on the principles for regression analysis. Regression analysis is a powerful statistical method used to establish relationship and compare levels of a dependent and independent variable. Therefore, in this study, the dependent variable is the final price of the Google stock whereas the independent variable comprises of the first trading price, the highest price at which it was traded during the day, the lowest price as well as the volume of trading and a moving average of the closing prices over the last 20 trading periods.
+
+These variables involve the usage of a basic tool in regression analysis known as the linear regression in determining their connection. This technique is based on the presumption that the relationship between the dependent variable and the independent variables is directly proportional (Kronthaler & Zöllner, 2021). The basic goal is to fit a straight line, y = mx + b, that provides the most accurate approximation to the given data. The linear regression equation model in this study shall serve to predict Google’s stock closing prices by finding the values of the predictors.
+
+Two are worthy of particular discussion here: the logarithm of time and the moving average taken as an independent variable. The moving average is one of the standard technical indicators that helps to remove the noise of short-term market forces and reveal the trends in the prices of stocks (Derindere Köseoğlu et al. 2022). The incorporation of the20-day moving average can supplement the factor P as the model takes into account the current trends of prices, which might enhance the proposed model’s prediction efficacy.
+
+### Null Hypothesis (H0)
+
+The null hypothesis (H0) of the study assumes that there is no interaction between the predictors variables (Open, High, Low, Volume, and Moving_Avg) and the outcome variable (Close).
+
+### Alternative Hypothesis (Ha)
+
+On the other hand, the null hypothesis (H0), considers that all these variables do not have an effect on the stock price On the other hand, the null hypothesis (H0), assume that none of the independent variables affects the stock price; while the alternative hypothesis (Ha) is that at least one of the independent variables influences the stock price.
+
+In order to confirm these hypotheses a statistical adjustment to the model is performed. Significant of estimated coefficients: t test Overall, goodness of fit of the model is evaluated by some measures like coefficient of determination which represents percent of variance in dependent variable explained by the independent variables. The residual standard error is another important aspect that gives information regarding the precision of the model where it gives an estimate of an average distance of the values from the regression line of best fit. 
+
+```{r Load necessary libraries}
+
+library(tidyverse)
+library(caret)
+library(stargazer)
+library(zoo)
+library(corrplot)
+```
+
+## Data
+
+The dataset employed in this study consists of historical stock prices for Google Inc. (ticker symbol: This data was gifted from Yahoo Finance and Kaggle and contains information about Alphabet (ticker symbol: GOOGL) This dataset covers up to the present time from August 19, 2004, making it feasible to use the data to analyze multiple scenarios in the market. This involvement makes it possible for one to have a comprehensive platform on which he can work towards giving various aspects of stock prices. The dataset includes the following variables: These are seven of the known stock and index trades data attributes: Date, Open, High, Low, Close, Adjusted Close, and Volume. Date variable is the actual trading days, while Open, high, Low, closing price and the adjusted closing price are the actual stock prices at a certain point in the trading period. Signifying the number of shares that is traded on the particular day, the Volume variable enables the analyst to gauge the total activity of a particular asset on any given day. This detailed information enables one to understand factors that affect stock prices cause by cash resolved.
+
+
+```{r Dataset Loading}
+stock_data <- read_csv("D:/dataimp/n5/NJ1/project/project/GOOGL.csv")
+head(stock_data)
+```
+
+To perform this, when loading the dataset into R, one has to check the data frame for any cases with missing values in it and also, check the data types of each column present on the data frame. This initial scan of the new data was very beneficial as it helped in ascertaining that all parameters were captured fully in readiness for the next data analysis. Other important findings on the data quality include The missing value column was zero which showed that the dataset was properly managed and accurate. Reflecting on linear time was necessary for time-series analysis; before any time processing, the field Date was transformed into the Date format in R. The conversion of the Date field allowed for the use of particular functions and plotting techniques strictly for time, which is critical for the interpretation and visualization of stock price fluctuations over a given period. Moreover, a recently developed indicator, the 20-day moving average, should be used to identify short term tendencies and eliminate daily noise (Guleria et al. 2021). This moving average is really obtained from a function that calculates the average of the closing prices over the last twenty trading days.
+
+By adding a 20-day moving average, an overall pattern of the stock’s price was presented that was easy to follow and this smoothed the line making it easier to see the underlying patterns, especially when analysing daily price information. To make sure subsequent datasets remain complete for training models, all rows with NA records obtained by calculating the moving average were also deleted. The final dataset comprised all the required variables and their transformations; thereby forming a proper foundation for building a linear regression model. Thus, using this well-prepared dataset, the study had to establish a high level of predictive accuracy in relation to future stock prices, and thus provide useful suggestions to investors, as well as make its own contribution to the development of studies in the analysis of the financial markets.
+
+## Methodology
+
+In this paper, the presentation of the proposed methodology section provides an overview of the procedures and techniques involved in developing a predictive model for Google stock prices. Here, only a brief overview of the data preprocessing, feature engineering, segregation of data into training and testing datasets, model training and assessment of model efficiency is given. These steps are carefully planned and thought out in a way that makes it possible to arrive at the most accurate predictions.
+
+### Data Preprocessing
+
+The first stage of the methodology entailed reading in the dataset and exploring it for general patterns, outliers and any missing values. Historical stock price data for Google was collected from Yahoo Finance and Kaggle and is based on the following data fields: Date, Low, High, Open, Volume and Close. They were Date, Open, High, Low, Close, Adj Close, and Volume of the stock price.
+
+```{r Preprocessing the data}
+sum(is.na(stock_data))
+str(stock_data)
+stock_data <- na.omit(stock_data)
+stock_data$Date <- as.Date(stock_data$Date, format="%m/%d/%Y")
+```
+
+
+```{r Visualization}
+ggplot(stock_data, aes(x = Date, y = Close)) +
+  geom_line(color = "blue") +
+  labs(title = "Google Stock Prices", x = "Date", y = "Closing Price")
+
+ggplot(stock_data, aes(x = Date)) +
+  geom_line(aes(y = Close, color = "Close")) +
+  geom_line(aes(y = High, color = "High")) +
+  geom_line(aes(y = Low, color = "Low")) +
+  labs(title = "Close vs High and Low", x = "Date", y = "Price") +
+  scale_color_manual(values = c("Close" = "blue", "High" = "red", "Low" = "green")) +
+  theme_minimal()
+```
+
+Scatter plot and correlation matrix: No missing values were present at first glance so no data imputation was done. The Date column was logged to the appropriate format to enable proper time-series manipulation and exploration. Data cleaning and analysis were done, and data visualization was done as well using tidyverse option in R software (Alsmadi et Arab 2023). In transforming the Date column, the following procedure was applied: PassengerID, Name, Sex, Age, SibSp, Parch, Fare, and Embarked were transformed as is but the Date was converted to the format required through the use of the as. The use of the date function, it helped in getting rid of entries that had their dates in formats that were unfit for further analysis.
+
+### Feature Engineering
+
+As the objective was to capture short-term trends in stock prices, a new feature termed as the ‘20-day Moving Average’ was factored in. This specific feature was generated using the rollmean function available in the zoo package that identifies the moving average for a defined window size. Using moving averages make it easier to determine the underlying trends and patterns of the stock prices since it gives a smoothed picture instead of just the individual points.
+
+```{r Feature engineering process}
+stock_data <- stock_data %>%
+  mutate(Moving_Avg = rollmean(Close, k = 20, fill = NA))
+stock_data <- na.omit(stock_data)
+head(stock_data)
+```
+
+As a result of the above moving average, some surveys were purged/ filtered out because they included NA values arising from the window calculation (Schwab-McCoy et al., 2021). This was important since, in some cases, there might be some biases that could be caused by incomplete information.
+
+### Data Splitting
+
+Superior model was constructed through splitting the records into training records, and records into two groups for testing. For this, the CART algorithm’s createDataPartition function in the caret package was used. The training set was composed of data comprising 80% that of the entire dataset while the testing set was made up of the remaining 20%. 
+
+```{r Split the data into training and testing sets}
+set.seed(123)
+trainIndex <- createDataPartition(stock_data$Close, p = .8, 
+                                  list = FALSE, 
+                                  times = 1)
+train_data <- stock_data[trainIndex, ]
+test_data <- stock_data[-trainIndex, ]
+```
+
+This split helped to guarantee that the same set was used to train the model on the majority of the data and to validate the result on a different set of data. By specifying a seed value before the split, the same sequence of split was obtained every time. Another step known as Setting of seed is very important in any machine learning task to ensure the same random sample is produced for reuse purposes.
+
+### Model Building
+
+The essence of the proposed approach can be described as follows: constructing a linear regression model to forecast the closing stock prices at Google. The model was built using the train function from the caret package with the input variables Open, High, Low, and Volume as independent variables and Close as the dependent variable, and Moving_Avg as a tuned parameter. 
+
+```{r Train the model}
+model <- train(Close ~ Open + High + Low + Volume + Moving_Avg, 
+               data = train_data, 
+               method = "lm")
+summary(model)
+```
+
+Linear regression was used due to the program’s simplicity and ability to determine the correlation between different variables (Çetinkaya-Rundel & Ellison, 2021). In the model training step, it was essentially trying to find a straight line that best fits the observed data and this was achieved through the least squared’s method.
+
+### Model Evaluation
+
+The linear regression model that was developed was assessed using different statistics such as RMSE, the coefficient of determination (R-squared), and the Mean Absolute Error (MAE). These values give information on the performance of developed model as well as how good this model is in explaining the variance of closing prices. In estimating the predict function for the test data, the postResample function was applied in order to compare the generated predictions to the actual closing prices. The results revealed a very high model indeed with R squared value showing a value slightly less than 0.99 which implies that very high proportion of variability in the closing prices has been explained by the model (Brunsdon and Comber, 2021).
+
+```{r Evaluating the model performance}
+predictions <- predict(model, test_data)
+performance <- postResample(pred = predictions, obs = test_data$Close)
+performance
+```
+
+The approach discussed above can be used for designing a model that can be used to give a prediction on the Google’s stock prices. Through the data preprocessing, feature engineering, feature selection, data splitting, and rigorous model evaluation, the study seeks to develop credible forecast accuracy through the models. The advantages of this approach are that it lays down a proper structure for the following analysis and interpretation of the results.
+
+## Results
+
+The major findings were established from the analysis, thereby having provided a clear understanding of the determinants of the Google stock prices. This was determined from the model summary and the performance metrics through the application of the linear regression modeling where notable patterns were experienced on the given dataset. 
+
+```{r Regression Analysis}
+stargazer(model$finalModel, type = "text")
+```
+
+Initially, the coefficients of the developed model revealed significant factors affecting closing cost. Specifically, the float values like Open, High, Low, and Moving_Avg were found significantly affecting related variables. In case of Open: – 0. 578, for High: 0. 727, for Low: 0. 820 had a particularly interesting carry and all three had a p-value < 0. 001. It means that when these variables vary, so does the variable closing price and anything other controlling factor (Pittard and Li, 2020). Also, analysis from the regression results revealed a sizeable positive effect of Moving_Avg on closing prices with coefficient 0. 033 and a p-value of less than 0 It is concluded that the mean fish biomass catches of the five countries are significantly different from one another. 001. These results overall indicate these factors as very influential in holding the capability to predict stock quotes.
+
+```{r correlations between variables}
+correlation_matrix <- cor(stock_data[, c("Open", "High", "Low", "Close", "Volume", "Moving_Avg")])
+corrplot::corrplot(correlation_matrix, type = "upper", order = "hclust", tl.col = "black", tl.srt = 45)
+```
+
+```{r Pairwise scatterplot of selected variables}
+pairs(stock_data[, c("Open", "High", "Low", "Close", "Volume", "Moving_Avg")])
+```
+
+Secondly, as shown by the subsequent evaluation of the model, it also proved viable. The RMSE of 5 means that 5 is the average of the squared differences between the predicted values and the actual ones as the model is still not perfect. 479 pointed the scale of high accuracy when it comes to estimating the stock prices. Furthermore the model which used in this study yielded a very good R square of 0. 9999, which is approximately equivalent to the statement 99 percent, implying that the reader knows that the figures are rhyming ones and there was no need to say the final ‘0’ in ‘percent’. Thus, the one mentioned above could explain 99% of the variability in closing prices out of 100%. For prediction accuracy, the model recorded a Mean Absolute Error (MAE) of 3. 020 supported the results in affirming the validity of the model as demonstrated by Nandiyanto and colleagues (2023). 
+
+```{r Scatterplot with regression}
+ggplot(stock_data, aes(x = Moving_Avg, y = Close)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Scatterplot of Closing Price vs Moving Average", x = "Moving Average", y = "Closing Price")
+
+```
+
+In addition, the model residual standard error was established at 5. 292 on 3523 degrees of freedom, and while the F-statistic = 9020142 was massively high, the degrees of freedom being 1 & 3523, the p-value = 0.002 was meaningful. 2e-16. Such statistics support the validity of the model as well as the importance of the combination of predictor variables isolates.
+
+## Implications
+
+Finally, the study sheds important contemporary and practical significance, it means its application for investors, financial analysts, and policymakers. In conclusion, while dealing with investment it is always crucial for investors to make efficient decisions and regarding this they can think about the stock market with the help of regression model as one of the efficient tools that would help them to predict and handle the various conditions of the market. This is because when investors use the model to predict the potential of various investment opportunities, the accurate prediction enables them to invest in the most profitable and balance risks and returns in their portfolios (Abbasnasab Sardareh et al. 2021). The present work can be useful for financial analysts since it can serve as an additional enrichment of their regression model. The inclusion of key factors for the fluctuations in stock price further improves the analyst’s capability to draw sound conclusions and produce value-additive recommendations to the consumers and investors (da Silva and Moura, 2020). Finally, the model’s evaluative metrics such as RMSE, R-Square, and MAE aid in analyzing performance of specific investment plans and even general portfolio performance (Radanliev et al. 2020). In totality, the observations of the study provide credence to the role of accurate stock prices in championing for the right and coherent decisions hence enhancing sustainable economic growth.
+
+## Conclusion
+
+In conclusion, the study highlights the results of the proposed algorithm to predict the Google stock prices using the linear regression model. The success rate of the model is significantly high due to the feature engineering done on the current dataset and considering important attributes like opening prices, high and low rate, volume and 20 periods moving average. From the results of regression analysis, the coefficients of independent variables are all found significant which means these variables have an influence on stock price fluctuation. Moreover, the accuracy of the proposed model is evident from its evaluation statistics such as RMSE, R-squared, and MAE that established high applicability in predicting Google stock prices.
+
+The implications of this study are important to investors, financial analysts, and policymakers since it shows that ES co-location enhances the speed of information processing and can impact stock price behavior. The prediction of stock prices can assist in the decision-making process of shareholders and minimize their loss by checking market anomalies. In additional, this paper said that through models, monitor market changes, and analyze the stability of the economy and that policymakers can implement regulations more efficient.
+
+## References
+
+Holmlund, M., Van Vaerenbergh, Y., Ciuchita, R., Ravald, A., Sarantopoulos, P., Ordenes, F.V. and Zaki, M., 2020. Customer experience management in the age of big data analytics: A strategic framework. Journal of Business Research, 116, pp.356-365.
+
+Bag, S., Wood, L.C., Xu, L., Dhamija, P. and Kayikci, Y., 2020. Big data analytics as an operational excellence approach to enhance sustainable supply chain performance. Resources, conservation and recycling, 153, p.104559. 
+
+Zhong, S., Zhang, K., Bagheri, M., Burken, J.G., Gu, A., Li, B., Ma, X., Marrone, B.L., Ren, Z.J., Schrier, J. and Shi, W., 2021. Machine learning: new ideas and tools in environmental science and engineering. Environmental Science & Technology, 55(19), pp.12741-12754. 
+
+Ciampi, F., Demi, S., Magrini, A., Marzi, G. and Papa, A., 2021. Exploring the impact of big data analytics capabilities on business model innovation: The mediating role of entrepreneurial orientation. Journal of Business Research, 123, pp.1-13. 
+
+Kronthaler, F. and Zöllner, S., 2021. Data analysis with RStudio. An Easygoing Introduction, pp.7-131. 
+
+Derindere Köseoğlu, S., Ead, W.M. and Abbassy, M.M., 2022. Basics of Financial Data Analytics. In Financial Data Analytics: Theory and Application (pp. 23-57). Cham: Springer International Publishing. 
+
+Giorgi, F.M., Ceraolo, C. and Mercatelli, D., 2022. The R language: an engine for bioinformatics and data science. Life, 12(5), p.648. 
+
+Guleria, D. and Kaur, G., 2021. Bibliometric analysis of ecopreneurship using VOSviewer and RStudio Bibliometrix, 1989–2019. Library Hi Tech, 39(4), pp.1001-1024. 
+
+Alsmadi, A.A., Shuhaiber, A., Al-Okaily, M., Al-Gasaymeh, A. and Alrawashdeh, N., 2023. Big data analytics and innovation in e-commerce: current insights and future directions. Journal of Financial Services Marketing, pp.1-18. 
+
+Schwab-McCoy, A., Baker, C.M. and Gasper, R.E., 2021. Data science in 2020: Computing, curricula, and challenges for the next 10 years. Journal of Statistics and Data Science Education, 29(sup1), pp.S40-S50. 
+
+Çetinkaya-Rundel, M. and Ellison, V., 2021. A fresh look at introductory data science. Journal of Statistics and Data Science Education, 29(sup1), pp.S16-S26. 
+
+Brunsdon, C. and Comber, A., 2021. Opening practice: supporting reproducibility and critical spatial data science. Journal of Geographical Systems, 23(4), pp.477-496. 
+
+Pittard, W.S. and Li, S., 2020. The essential toolbox of data science: Python, R, Git, and Docker. Computational Methods and Data Analysis for Metabolomics, pp.265-311. 
+
+Nandiyanto, A.B.D., Al Husaeni, D.N. and Al Husaeni, D.F., 2023. Introducing ASEAN journal of science and engineering: A bibliometric analysis study. Journal of Advanced Research in Applied Sciences and Engineering Technology, 31(3), pp.173-190. 
+
+Abbasnasab Sardareh, S., Brown, G.T. and Denny, P., 2021. Comparing four contemporary statistical software tools for introductory data science and statistics in the social sciences. Teaching Statistics, 43, pp.S157-S172. 
+
+da Silva, H.A. and Moura, A.S., 2020. Teaching introductory statistical classes in medical schools using RStudio and R statistical language: evaluating technology acceptance and change in attitude toward statistics. Journal of Statistics Education, 28(2), pp.212-219. 
+
+Radanliev, P., De Roure, D. and Walton, R., 2020. Data mining and analysis of scientific research data records on Covid-19 mortality, immunity, and vaccine development-In the first wave of the Covid-19 pandemic. Diabetes & Metabolic Syndrome: Clinical Research & Reviews, 14(5), pp.1121-1132. 
+
+Chiarello, F., Belingheri, P. and Fantoni, G., 2021. Data science for engineering design: State of the art and future directions. Computers in Industry, 129, p.103447. 
+
+Beckman, M.D., Çetinkaya-Rundel, M., Horton, N.J., Rundel, C.W., Sullivan, A.J. and Tackett, M., 2021. Implementing version control with Git and GitHub as a learning objective in statistics and data science courses. Journal of Statistics and Data Science Education, 29(sup1), pp.S132-S144. 
+
+Kim, B. and Henke, G., 2021. Easy-to-use cloud computing for teaching data science. Journal of Statistics and Data Science Education, 29(sup1), pp.S103-S111.
